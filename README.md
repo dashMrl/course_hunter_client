@@ -14,3 +14,8 @@ $ npm i
 $ npm run build
 ``` 
 > It's recommended to separate you client and server
+
+## TODOs
+- [ ] user agreement page
+- [ ] downloading page
+- [ ] rewrite with TS

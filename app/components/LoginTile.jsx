@@ -8,11 +8,11 @@ class LoginTile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            uname: 'U201517002',
-            pwd: 'lx19970510',
-            start: '2018-02-26',
-            end: '2018-06-26',
-            format: 'ics'
+            uname: '',
+            pwd: '',
+            start: '',
+            end: '',
+            format: ''
         }
         this.handleChanged = this.handleChanged.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
