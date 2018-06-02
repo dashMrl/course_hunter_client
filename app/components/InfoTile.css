@@ -1,0 +1,16 @@
+div.tile{
+    width: 55%;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://source.unsplash.com/random');
+}
+div.content{
+    padding: 10%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    background-color: rgba(red, green, blue,1);
+}
+div.title{
+    color: white;
+}
