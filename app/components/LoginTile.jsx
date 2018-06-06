@@ -4,6 +4,12 @@ import line from '../assets/svg/line.svg'
 import userIcon from '../assets/svg/user.svg'
 import pwdIcon from '../assets/svg/lock.svg'
 
+
+const dev = 'http://127.0.0.1:3000/course'
+const prod = 'api/course'
+const hunterUrl = prod
+
+
 class LoginTile extends React.Component {
     constructor(props) {
         super(props)
@@ -32,13 +38,12 @@ class LoginTile extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        const url = 'http://127.0.0.1:3000/course'
         const fd = new Array()
         for (var k in this.state) {
             fd.push(`${encodeURIComponent(k)}=${encodeURIComponent(this.state[k])}`)
         }
 
-        fetch(`${url}/${this.state.format}`, {
+        fetch(`${hunterUrl}/${this.state.format}`, {
             method: 'POST',
             mode: 'cors',
             headers: new Headers({
@@ -50,13 +55,19 @@ class LoginTile extends React.Component {
         })
             .then(res => {
                 if (res.ok) {
-                    return res.text()
+                    this.setState({})
+                    res.blob()
+                        .then(blob => {
+                            const a = document.createElement('a');
+                            const url = window.URL.createObjectURL(blob);
+                            a.href = url;
+                            a.download = `courses.${this.state.format}`
+                            a.click();
+                            window.URL.revokeObjectURL(url);
+                        })
                 } else {
 
                 }
-            })
-            .then(txt => {
-                console.log(txt)
             })
             .catch(err => {
                 alert(err.toString())
